@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour
     public int bullet;
     public int totalBullet;
     public int maxBulletInMagazine;
+    public float damage;
 
     Animator animator;
 
@@ -83,6 +84,11 @@ public class Weapon : MonoBehaviour
             GameObject particle = Instantiate(particlePrefab);
             particle.transform.position = hitPosition;
             particle.transform.forward = hit.normal;
+
+            if (hit.collider.tag == "Enrmy")
+            {
+                hit.collider.GetComponent<Health>().Damage(damage);
+            }
 
         }
 

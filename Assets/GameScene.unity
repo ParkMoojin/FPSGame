@@ -3667,6 +3667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3344797552917926168, guid: da1203547328fdb41974e0b5334e799a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8340921455869514200, guid: da1203547328fdb41974e0b5334e799a, type: 3}
       propertyPath: m_Controller
       value: 
@@ -3684,6 +3688,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3344797552917926168, guid: da1203547328fdb41974e0b5334e799a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1936272953}
+    - targetCorrespondingSourceObject: {fileID: 3344797552917926168, guid: da1203547328fdb41974e0b5334e799a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1936272956}
   m_SourcePrefab: {fileID: 100100000, guid: da1203547328fdb41974e0b5334e799a, type: 3}
 --- !u!1 &996543522
 GameObject:
@@ -6225,10 +6232,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 500
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -6260,6 +6267,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1936272956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936272946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6890ab7a7c8e9e94c9d0c48f19b73ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10
 --- !u!1001 &1947837434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6698,6 +6718,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 393630666}
     m_Modifications:
+    - target: {fileID: 1175531812644020871, guid: 282faefe6b240e648bc68c08a94825c6, type: 3}
+      propertyPath: damage
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1175531812644020871, guid: 282faefe6b240e648bc68c08a94825c6, type: 3}
       propertyPath: particlePrefab
       value: 

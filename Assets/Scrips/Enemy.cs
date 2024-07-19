@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, Health.IHealthListener
 {
 
-    public enum State
+    enum State
     {
         Idle,
         Walk, 
@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
 
     State state;
     float timeForNextState = 2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
             case State.Idle:
                 float distance = (player.transform.position -
                     (transform.position + GetComponent<CapsuleCollider>().center)).magnitude;
-                if (distance<1.0f)
+                if (distance < 1.0f)
                 {
                     Attack();
                 }
@@ -50,19 +51,20 @@ public class Enemy : MonoBehaviour
                     timeForNextState -= Time.deltaTime;
                     if (timeForNextState < 0)
                     {
-                        StartWalk();
+                        StarWalk();
+
                     }
                 }
                 break;
             case State.Walk:
-                if (agent.remainingDistance<1.0f || !agent.hasPath)
+                if (agent.remainingDistance < 1.0f || !agent.hasPath)
                 {
                     StartIdle();
                 }
                 break;
             case State.Attack:
                 timeForNextState -= Time.deltaTime;
-                if (timeForNextState<0)
+                if (timeForNextState < 0)
                 {
                     StartIdle();
                 }
@@ -70,25 +72,17 @@ public class Enemy : MonoBehaviour
         }
 
 
- 
-
-        if (timeForNextState<0)
+        if (timeForNextState < 0)
         {
             switch (state)
             {
                 case State.Idle:
-                    state = State.Walk;
-                    agent.destination = player.transform.position;
-                    timeForNextState = Random.Range(5f, 7f);
-                    agent.isStopped = false;
-                    animator.SetTrigger("Walk");
                     break;
                 case State.Walk:
-                    
                     break;
 
             }
-        }    
+        }
     }
 
     void Attack()
@@ -114,5 +108,9 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Idle");
     }
 
+    public void Die()
+    {
+        Debug.Log("Die");
+    }
 
 }
